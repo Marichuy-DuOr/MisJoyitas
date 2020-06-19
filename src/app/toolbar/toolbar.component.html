@@ -1,17 +1,47 @@
 <div class="toolbar" role="banner">
-  <div class="spacer"></div>
+    <div class="spacer"></div>
 
-  <!--<img width="60" alt="Mis Joyitas Logo" src="../assets/diamante.png"/>-->
-  <i class="fas fa-3x fa-gem primary-icon" style="margin-right: 1rem;"></i>
-  
-  <p class="h2 title">Mis Joyitas</p>
-  <div class="spacer"></div>
-  
-  <a aria-label="Carrito" [routerLink]="['carrito']" class="ico">
-      <i class="fas fa-2x fa-cart-plus"></i>
-  </a>
-  
-  <a aria-label="Carrito" [routerLink]="['login']" class="ico">
+    <!--<img width="60" alt="Mis Joyitas Logo" src="../assets/diamante.png"/>-->
+    <i class="fas fa-3x fa-gem primary-icon" style="margin-right: 1rem;"></i>
+
+    <p class="h2 title">Mis Joyitas</p>
+    <div class="spacer"></div>
+
+    <a aria-label="Carrito" [routerLink]="['carrito']" class="ico">
+        <i class="fas fa-2x fa-cart-plus"></i>
+    </a>
+    <!--
+    <a aria-label="Carrito" [routerLink]="['login']" class="ico">
       <i  class="fas fa-2x fa-sign-in-alt"></i>
   </a>
+  -->
+    <ul *ngIf="user$ | async as user; else login">
+
+        <li class="nav-item" style="cursor: pointer ">
+            <a class="nav-link" (click)="onLogout()">Logout</a>
+        </li>
+        <div *ngIf="user.email; else telef">
+            <li class="nav-item">
+                <a class="nav-link">{{ user.email }}</a>
+            </li>
+        </div>
+        <ng-template #telef>
+            <li class="nav-item">
+                <a class="nav-link">{{ user.phoneNumber }}</a>
+            </li>
+        </ng-template>
+    </ul>
+
+    <ng-template #login>
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a [routerLink]="['/login']" class="ico">
+                    <i class="fas fa-2x fa-sign-in-alt"></i></a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/register']">Register</a>
+            </li>
+        </ul>
+    </ng-template>
+
 </div>

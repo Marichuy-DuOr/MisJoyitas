@@ -1,0 +1,42 @@
+<div class="container mt-5 pt-5">
+
+    <div [hidden]="user">
+        <h1>Ingresar con tu número de teléfono</h1>
+        <form [formGroup]="smsForm" (ngSubmit)="sendLoginCode()">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Teléfono</label>
+                <input type="text" class="form-control" formControlName="cell" placeholder="4491234567" required>
+            </div>
+            <div id="recaptcha-container"></div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Envíar sms</button>
+            </div>
+        </form>
+
+        <div *ngIf="windowRef.confirmationResult">
+            <form [formGroup]="codeForm" (ngSubmit)="verifyLoginCode()">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Código</label>
+                    <input type="text" class="form-control" formControlName="code" placeholder="Verificar codigo" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Verificar código</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-group">
+            <button (click)="onGoogleLogin()" class="btn btn-primary btn-sm"><i class="fab fa-google"></i> Entra con Google</button>
+        </div>
+
+        <p>Login con email
+            <a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
+        </p>
+    </div>
+
+    <div *ngIf="user">
+        Haz iniciado correctamente con tu numero de telefono UserId: {{ user?.uid }}
+    </div>
+
+</div>

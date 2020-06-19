@@ -1,35 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
-  body {
+
+body {
     background-color: #F2F2F2;
     font-family: 'Bellota';
-  }
+}
+
 
 /* --- Fuente ---*/
-@font-face{
-  font-family: 'Cream Cake';
-  src: url(CreamCake.ttf);
+
+@font-face {
+    font-family: 'Cream Cake';
+    src: url(CreamCake.ttf);
 }
 
-@font-face{
-  font-family: 'Lobster';
-  src: url(LobsterTwo-Regular.ttf);
+@font-face {
+    font-family: 'Lobster';
+    src: url(LobsterTwo-Regular.ttf);
 }
 
-@font-face{
-  font-family: 'Bellota';
-  src: url(Bellota-Regular.ttf);
+@font-face {
+    font-family: 'Bellota';
+    src: url(Bellota-Regular.ttf);
 }
+
 
 /* --- Toolbar ---*/
-.title{
-  font-family: 'Cream Cake';
-  font-size: 50px;
+
+.title {
+    font-family: 'Cream Cake';
+    font-size: 50px;
 }
+
 .spacer {
     flex: 1;
-  }
+}
 
-  .toolbar {
+.toolbar {
     position: absolute;
     top: 0;
     left: 0;
@@ -40,153 +46,177 @@
     background-color: #04B4AE;
     color: white;
     font-weight: 600;
-  }
+}
 
-  .toolbar img {
+.toolbar img {
     margin: 0 16px;
-  }
+}
 
-  .ico:hover {
+.ico:hover {
     color: #ffffff;
     opacity: 0.8;
-  }
-  
-  .ico{
+}
+
+.ico {
     color: #ffffff;
     margin-right: 1rem;
-  }
+}
 
-  .primary-icon {
+.primary-icon {
     color: #ffffff;
-  }
-  /* --- Navbar ---*/
-  .posicion {
+}
+
+
+/* --- Navbar ---*/
+
+.posicion {
     top: 90px;
     left: 0;
-  }
+}
 
-  .dropdown-item:hover{
+.dropdown-item:hover {
     font-weight: bold;
-  }
-  
-  /* --- Carrusel ---*/
-  .pos{
-    top: 120px;
-  }
+}
 
-  .p-carrusel{
+
+/* --- Componentes ---*/
+
+.pos-com {
+    top: 600px;
+}
+
+
+/* --- Carrusel ---*/
+
+.pos {
+    top: 120px;
+}
+
+.p-carrusel {
     font-family: 'Lobster';
     font-size: 30px;
-  }
+}
 
 
 /* --- Galeria ---*/
-.joyeria{
-  margin-top: 50px;
-  font-family: 'Cream Cake';
-  font-size: 60px;
+
+.joyeria {
+    margin-top: 50px;
+    font-family: 'Cream Cake';
+    font-size: 60px;
 }
 
-.titulo-galeria{
-  font-family: 'Lobster';
-  font-size: 45px;
+.titulo-galeria {
+    font-family: 'Lobster';
+    font-size: 45px;
 }
 
-.contenedor{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.contenedor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
-.contenedor figure{
-  position:relative;
-  height: 300px;
-  cursor: pointer;
-  width: 350px;
-  overflow: hidden;
-  border-radius: 6px;
-  box-shadow: 0px 15px 25px rgba(0,0,0,0.50);
+
+.contenedor figure {
+    position: relative;
+    height: 300px;
+    cursor: pointer;
+    width: 350px;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.50);
 }
-.contenedor figure img{
-  width: 100%;
-  height: 100%;
-  transition: all 500ms ease-out;
+
+.contenedor figure img {
+    width: 100%;
+    height: 100%;
+    transition: all 500ms ease-out;
 }
-.contenedor figure .capa{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(54, 171, 194, 0.7);
-  transition: all 500ms ease-out;
-  opacity: 0;
-  visibility: hidden;
-  text-align: center;
+
+.contenedor figure .capa {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(54, 171, 194, 0.7);
+    transition: all 500ms ease-out;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
 }
-.contenedor figure:hover > .capa {
-  opacity: 1;
-  visibility: visible;
+
+.contenedor figure:hover>.capa {
+    opacity: 1;
+    visibility: visible;
 }
-.contenedor figure:hover > .capa h1{
-  margin-top: 70px;
-  margin-bottom: 15px;
+
+.contenedor figure:hover>.capa h1 {
+    margin-top: 70px;
+    margin-bottom: 15px;
 }
-.contenedor figure:hover > img{
-  transform: scale(1.3);
+
+.contenedor figure:hover>img {
+    transform: scale(1.3);
 }
-.contenedor figure .capa h1{
-  color: #fff;
-  font-weight: 400;
-  margin-bottom: 120px;
-  transition: all 500ms ease-out;
-  margin-top: 30px;
+
+.contenedor figure .capa h1 {
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 120px;
+    transition: all 500ms ease-out;
+    margin-top: 30px;
 }
-.contenedor figure .capa h6{
-  color: #fff;
-  font-size: 15px;
-  line-height: 1.5;
-  width: 100%;
-  max-width: 220px;
-  margin: auto;
+
+.contenedor figure .capa h6 {
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.5;
+    width: 100%;
+    max-width: 220px;
+    margin: auto;
 }
+
 
 /* --- Redes Sociales ---*/
-.social .social__title .social__item-title{
-  font-weight: 400;
+
+.social .social__title .social__item-title {
+    font-weight: 400;
 }
 
-.separator{
-  color: #04B4AE;
-  width: 100px; 
-  height: 0;
-  border: 2px solid;
-  border-radius: 4px;
+.separator {
+    color: #04B4AE;
+    width: 100px;
+    height: 0;
+    border: 2px solid;
+    border-radius: 4px;
 }
 
 .social-icon {
-  margin-top: 5px;
-  color: #04B4AE;
+    margin-top: 5px;
+    color: #04B4AE;
 }
 
 .social-icon:hover {
-  color: #04B4AE;
-  opacity: 0.8;
+    color: #04B4AE;
+    opacity: 0.8;
 }
 
 .social {
-  margin-top: 35px;
-  margin-bottom: 50px;
+    margin-top: 35px;
+    margin-bottom: 50px;
 }
+
 
 /* --- Footer ---*/
-footer{
-  background-color: #fff;
+
+footer {
+    background-color: #fff;
 }
 
-.tarjetas{
-  margin: 1rem;
+.tarjetas {
+    margin: 1rem;
 }
 
-@media only screen and (min-width: 640px){
-}
+@media only screen and (min-width: 640px) {}
