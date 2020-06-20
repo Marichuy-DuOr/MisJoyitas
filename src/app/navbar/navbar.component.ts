@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from './../shared/models/user';
+import { AuthService } from './../auth/services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  public user$: Observable<User> = this.authSvc.afAuth.user;
+
+  constructor( private authSvc: AuthService ) {  }
 
   ngOnInit(): void {
   }

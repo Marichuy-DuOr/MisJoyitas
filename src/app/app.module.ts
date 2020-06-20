@@ -30,6 +30,7 @@ import { SmsLoginComponent } from './auth/sms-login/sms-login.component';
 import { CanGuard } from './auth/guards/can-guard';
 import { CanAdminGuard } from './auth/guards/can-admin-guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminOptionsComponent } from './admin-options/admin-options.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     SendEmailComponent,
     SetRoleComponent,
-    SmsLoginComponent
+    SmsLoginComponent,
+    AdminOptionsComponent
   ],
   imports: [
     BrowserModule,

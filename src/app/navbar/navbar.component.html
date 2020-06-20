@@ -82,6 +82,12 @@
                 <a class="nav-link" [routerLink]="['about']">Acerca de</a>
             </li>
 
+            <div *ngIf="user$ | async as user">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['admin-options']">Admin</a>
+                </li>
+            </div>
+
         </ul>
         <div class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Buscar Joyas" aria-label="Buscar">

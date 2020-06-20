@@ -18,7 +18,6 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(private authSvc: AuthService, private router: Router, private configAlert: NgbAlertConfig) {
-    configAlert.type = 'danger';
     configAlert.dismissible = true;
    }
 

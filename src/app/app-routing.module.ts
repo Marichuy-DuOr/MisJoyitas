@@ -14,6 +14,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import { SetRoleComponent } from './auth/set-role/set-role.component';
 import { SmsLoginComponent } from './auth/sms-login/sms-login.component';
+import { AdminOptionsComponent } from './admin-options/admin-options.component';
 
 import { CanGuard } from './auth/guards/can-guard';
 import { CanAdminGuard } from './auth/guards/can-admin-guard';
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'verification-email', component: SendEmailComponent},
   {path: 'sms-login', component: SmsLoginComponent},
   {path: 'set-role', component: SetRoleComponent, canActivate: [CanAdminGuard]},
+  {path: 'admin-options', component: AdminOptionsComponent, canActivate: [CanAdminGuard]},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];

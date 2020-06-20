@@ -14,7 +14,6 @@ export class ForgotPasswordComponent implements OnInit {
 
   userEmail = new FormControl('', [Validators.required, Validators.email]);
   constructor(private authSvc: AuthService, private router: Router, private configAlert: NgbAlertConfig) {
-    configAlert.type = 'danger';
     configAlert.dismissible = true;
   }
 
@@ -26,10 +25,11 @@ export class ForgotPasswordComponent implements OnInit {
   async onReset() {
     if (this.userEmail.valid) {
       try {
-        const email = this. userEmail.value;
+        const email = this.userEmail.value;
         this.authSvc.resetPassword(email);
-        window.alert('Te mandamos el email, revisa tu inbox');
-        this.router.navigate(['/login']);
+        document.getElementById('dos').style.display = 'block';
+        setTimeout(() => document.getElementById('dos').style.display = 'none', 5000);
+        // this.router.navigate(['/login']);
       } catch (error) {
         console.log(error);
       }

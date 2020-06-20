@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './../services/auth.service';
+import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-set-role',
@@ -20,13 +21,15 @@ export class SetRoleComponent implements OnInit {
     id: new FormControl('')
   });
 
-  constructor( private firestoreService: AuthService ) {
+  constructor( private firestoreService: AuthService, private configAlert: NgbAlertConfig ) {
     this.newUserForm.setValue({
       id: '',
       email: '',
       role: '',
       phoneNumber: ''
     });
+    configAlert.type = 'danger';
+    configAlert.dismissible = true;
   }
 
   ngOnInit(): void {
@@ -39,13 +42,19 @@ export class SetRoleComponent implements OnInit {
         });
       });
     });
-    console.log(this.users);
+    // console.log(this.users);
+
+    document.getElementById('uno').style.display = 'none';
+    document.getElementById('dos').style.display = 'none';
   }
 
   public newUser(form, documentId = this.documentId) {
     console.log('sisemete');
     console.log(`Status: ${this.currentStatus}`);
     if (this.currentStatus == 1) {
+      document.getElementById('uno').style.display = 'block';
+      setTimeout(() => document.getElementById('uno').style.display = 'none', 5000);
+
     } else {
       const data = {
         email: form.email,
@@ -60,7 +69,9 @@ export class SetRoleComponent implements OnInit {
           phoneNumber: '',
           id: ''
         });
-        console.log('Documento editado exitósamente');
+        // console.log('Documento editado exitósamente');
+        document.getElementById('dos').style.display = 'block';
+        setTimeout(() => document.getElementById('dos').style.display = 'none', 5000);
       }, (error) => {
         console.log(error);
       });
@@ -79,6 +90,10 @@ export class SetRoleComponent implements OnInit {
       });
       editSubscribe.unsubscribe();
     });
+  }
+  
+  cerrar(alerta: string) {
+    document.getElementById(alerta).style.display = 'none';
   }
 
 }
