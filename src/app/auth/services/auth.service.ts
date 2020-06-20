@@ -29,6 +29,8 @@ export class AuthService extends RoleValidator {
   async login(email: string, password: string): Promise<User> {
     try {
       const { user } = await this.afAuth.signInWithEmailAndPassword(email, password);
+      // this.createUserData(user);
+      console.log(user);
       return user;
     } catch (error) {
       console.log(error);
@@ -77,7 +79,6 @@ export class AuthService extends RoleValidator {
   }
 
   public createUserData(user: User) {
-
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
     const data: User = {
       uid: user.uid,

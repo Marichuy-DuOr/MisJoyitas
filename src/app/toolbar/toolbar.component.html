@@ -15,33 +15,23 @@
       <i  class="fas fa-2x fa-sign-in-alt"></i>
   </a>
   -->
-    <ul *ngIf="user$ | async as user; else login">
+    <div *ngIf="user$ | async as user; else login">
 
-        <li class="nav-item" style="cursor: pointer ">
-            <a class="nav-link" (click)="onLogout()">Logout</a>
-        </li>
+        <a class="ico" (click)="onLogout()" style="cursor: pointer ">Logout</a>
         <div *ngIf="user.email; else telef">
-            <li class="nav-item">
-                <a class="nav-link">{{ user.email }}</a>
-            </li>
+
+            <a class="ico">{{ user.email }}</a>
         </div>
         <ng-template #telef>
-            <li class="nav-item">
-                <a class="nav-link">{{ user.phoneNumber }}</a>
-            </li>
+            <a class="ico">{{ user.phoneNumber }}</a>
         </ng-template>
-    </ul>
+    </div>
 
     <ng-template #login>
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a [routerLink]="['/login']" class="ico">
-                    <i class="fas fa-2x fa-sign-in-alt"></i></a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/register']">Register</a>
-            </li>
-        </ul>
+        <a [routerLink]="['/login']" class="ico">
+            <i class="fas fa-2x fa-sign-in-alt"></i></a>
+        <a class="ico" style="text-decoration:none;" [routerLink]="['/register']">Register</a>
+
     </ng-template>
 
 </div>

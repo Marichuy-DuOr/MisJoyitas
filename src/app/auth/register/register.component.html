@@ -1,4 +1,5 @@
 <div class="container mt-5 pt-5">
+    <ngb-alert id="uno" (close)="cerrar('uno')">Algunos de los campos no han sido llenados o estan incorrectos revisalos otra vez</ngb-alert>
     <h3 class="text-center">Registrarse</h3>
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
         <div class="form-group">
@@ -8,11 +9,12 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" class="form-control" formControlName="password" placeholder="Contraseña" minlength="6" required>
+            <input type="password" class="form-control" formControlName="password" placeholder="Minimo 6 caracteres" minlength="6" required>
         </div>
         <div class="form-group">
             <input type="password" class="form-control" formControlName="passwordVerf" placeholder="Repite tu contraseña" minlength="6" required>
         </div>
+        <ngb-alert id="dos" (close)="cerrar('dos')">Las contraseñas no coinciden, intenta otra vez</ngb-alert>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Registrate</button>
         </div>

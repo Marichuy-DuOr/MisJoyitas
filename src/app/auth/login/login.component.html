@@ -1,4 +1,5 @@
 <div class="container mt-5 pt-5">
+    <ngb-alert id="uno" (close)="cerrar('uno')">Algunos de los campos no han sido llenados o estan incorrectos revisalos otra vez</ngb-alert>
     <h3 class="text-center">Login</h3>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <div class="form-group">

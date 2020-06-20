@@ -29,6 +29,7 @@ import { SmsLoginComponent } from './auth/sms-login/sms-login.component';
 
 import { CanGuard } from './auth/guards/can-guard';
 import { CanAdminGuard } from './auth/guards/can-admin-guard';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { CanAdminGuard } from './auth/guards/can-admin-guard';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgbModule
   ],
   providers: [
     CanGuard,

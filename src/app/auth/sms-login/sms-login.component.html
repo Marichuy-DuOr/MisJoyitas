@@ -1,7 +1,10 @@
 <div class="container mt-5 pt-5">
 
     <div [hidden]="user">
+        <ngb-alert id="uno" (close)="cerrar('uno')">El número de teléfono ingresado no es válido</ngb-alert>
+
         <h1>Ingresar con tu número de teléfono</h1>
+
         <form [formGroup]="smsForm" (ngSubmit)="sendLoginCode()">
             <div class="form-group">
                 <label for="exampleInputEmail1">Teléfono</label>
@@ -20,6 +23,7 @@
                     <label for="exampleInputEmail1">Código</label>
                     <input type="text" class="form-control" formControlName="code" placeholder="Verificar codigo" required>
                 </div>
+                <ngb-alert id="dos" (close)="cerrar('dos')" style="display: none;">Llena el campo de forma correcta.</ngb-alert>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Verificar código</button>
                 </div>
