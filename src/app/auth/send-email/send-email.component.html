@@ -1,0 +1,28 @@
+<div class="container" style="height: 400px">
+    <div class="card text-center pos" *ngIf="user$ | async as user; else loading">
+        <div class="card-body">
+            <h3 class="card-title">Gracias por ingresar!</h3>
+            <div class="form-group">
+                <p>
+                    Enviamos un email a la dirección <strong>{{ user?.email }}</strong>
+                </p>
+                <p>
+                    Por favor checa tu email y da click en el link para verificar
+                </p>
+            </div>
+            <div class="form-group mt-4">
+                <button class="btn btn-primary" (click)="onSendEmail()">Renviar email de verificación</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #loading>
+    <div class="row text-center mt-5">
+        <div class="col">
+            <i class="fas fa-sync-alt fa-5x fa-spin"></i>
+        </div>
+    </div>
+</ng-template>

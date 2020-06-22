@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "misjoyitas-2b495": {
+      "hosting": {
+        "MisJoyitas": [
+          "misjoyitas-2b495"
+        ]
+      }
+    }
+  }
+}

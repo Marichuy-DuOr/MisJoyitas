@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "MisJoyitas",
+      "public": "dist/MisJoyitas",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

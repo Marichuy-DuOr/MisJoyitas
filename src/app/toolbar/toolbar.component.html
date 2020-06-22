@@ -1,17 +1,37 @@
 <div class="toolbar" role="banner">
-  <div class="spacer"></div>
+    <div class="spacer"></div>
 
-  <!--<img width="60" alt="Mis Joyitas Logo" src="../assets/diamante.png"/>-->
-  <i class="fas fa-3x fa-gem primary-icon" style="margin-right: 1rem;"></i>
-  
-  <p class="h2 title">Mis Joyitas</p>
-  <div class="spacer"></div>
-  
-  <a aria-label="Carrito" [routerLink]="['carrito']" class="ico">
-      <i class="fas fa-2x fa-cart-plus"></i>
-  </a>
-  
-  <a aria-label="Carrito" [routerLink]="['login']" class="ico">
+    <!--<img width="60" alt="Mis Joyitas Logo" src="../assets/diamante.png"/>-->
+    <i class="fas fa-3x fa-gem primary-icon" style="margin-right: 1rem;"></i>
+
+    <p class="h2 title">Mis Joyitas</p>
+    <div class="spacer"></div>
+
+    <a aria-label="Carrito" [routerLink]="['carrito']" class="ico">
+        <i class="fas fa-2x fa-cart-plus"></i>
+    </a>
+    <!--
+    <a aria-label="Carrito" [routerLink]="['login']" class="ico">
       <i  class="fas fa-2x fa-sign-in-alt"></i>
   </a>
+  -->
+    <div *ngIf="user$ | async as user; else login">
+
+        <a class="ico" (click)="onLogout()" style="cursor: pointer ">Logout</a>
+        <div *ngIf="user.email; else telef">
+
+            <a class="ico">{{ user.email }}</a>
+        </div>
+        <ng-template #telef>
+            <a class="ico">{{ user.phoneNumber }}</a>
+        </ng-template>
+    </div>
+
+    <ng-template #login>
+        <a [routerLink]="['/login']" class="ico">
+            <i class="fas fa-2x fa-sign-in-alt"></i></a>
+        <a class="ico" style="text-decoration:none;" [routerLink]="['/register']">Register</a>
+
+    </ng-template>
+
 </div>

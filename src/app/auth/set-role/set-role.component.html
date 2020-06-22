@@ -1,0 +1,52 @@
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-6">
+            <ngb-alert id="uno" type="danger" (close)="cerrar('uno')">Selecciona primero algun usuario.</ngb-alert>
+            <ngb-alert id="dos" type="success" (close)="cerrar('dos')">Se cambio el rol correctamente</ngb-alert>
+            <h1>Usuarios</h1>
+            <form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" class="form-control" formControlName="email" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Rol</label>
+                    <select class="form-control" id="exampleFormControlSelect1" formControlName="role">
+                        <option>ADMIN</option>
+                        <option>CLIENT</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info btn-block" value="Cambiar">
+                </div>
+            </form>
+        </div>
+
+        <div class="col">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Email/Telefono</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td *ngIf="user.data.email">{{user.data.email}}</td>
+                        <td *ngIf="user.data.email">{{user.data.role}}</td>
+                        <td *ngIf="user.data.email">
+                            <div class="btn-group mr-2" role="group" aria-label="Second group">
+                                <button type="button" class="btn btn-secondary" (click)="editUser(user.id)">Editar</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

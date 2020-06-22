@@ -1,0 +1,33 @@
+<div class="container mt-5 pt-5">
+    <ngb-alert id="uno" (close)="cerrar('uno')">Algunos de los campos no han sido llenados o estan incorrectos revisalos otra vez</ngb-alert>
+    <h3 class="text-center">Registrarse</h3>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Dirección email</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="juan@hotmail.com" required>
+            <small id="emailHelp" class="form-text text-muted">No compartiremos tu correo con nadie</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Contraseña</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Minimo 6 caracteres" minlength="6" required>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" formControlName="passwordVerf" placeholder="Repite tu contraseña" minlength="6" required>
+        </div>
+        <ngb-alert id="dos" (close)="cerrar('dos')">Las contraseñas no coinciden, intenta otra vez</ngb-alert>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Registrate</button>
+        </div>
+    </form>
+    <div class="form-group">
+        <button (click)="onGoogleLogin()" class="btn btn-primary btn-sm"><i class="fab fa-google"></i> Entra con Google</button>
+    </div>
+    <div class="form-group">
+        <a [routerLink]="['/sms-login']" routerLinkActive="router-link-active" class="btn btn-info btn-sm"> Entra con SMS</a>
+    </div>
+
+    <p>¿Ya tienes una cuenta?
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
+    </p>
+
+</div>
