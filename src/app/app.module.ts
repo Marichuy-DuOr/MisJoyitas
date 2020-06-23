@@ -31,6 +31,11 @@ import { CanGuard } from './auth/guards/can-guard';
 import { CanAdminGuard } from './auth/guards/can-admin-guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminOptionsComponent } from './admin-options/admin-options.component';
+import { GuiaAnillosComponent } from './guia-anillos/guia-anillos.component';
+import { EnviosComponent } from './envios/envios.component';
+import { CambiosComponent } from './cambios/cambios.component';
+import { FacturacionComponent } from './facturacion/facturacion.component';
+import { FormasPagoComponent } from './formas-pago/formas-pago.component';
 
 
 @NgModule({
@@ -53,7 +58,12 @@ import { AdminOptionsComponent } from './admin-options/admin-options.component';
     SendEmailComponent,
     SetRoleComponent,
     SmsLoginComponent,
-    AdminOptionsComponent
+    AdminOptionsComponent,
+    GuiaAnillosComponent,
+    EnviosComponent,
+    CambiosComponent,
+    FacturacionComponent,
+    FormasPagoComponent
   ],
   imports: [
     BrowserModule,
