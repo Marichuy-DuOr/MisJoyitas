@@ -33,6 +33,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminOptionsComponent } from './admin-options/admin-options.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ProductosGrafComponent } from './productos-graf/productos-graf.component';
+import { GuiaAnillosComponent } from './guia-anillos/guia-anillos.component';
+import { EnviosComponent } from './envios/envios.component';
+import { CambiosComponent } from './cambios/cambios.component';
+import { FacturacionComponent } from './facturacion/facturacion.component';
+import { FormasPagoComponent } from './formas-pago/formas-pago.component';
 
 
 @NgModule({
@@ -57,7 +62,12 @@ import { ProductosGrafComponent } from './productos-graf/productos-graf.componen
     SmsLoginComponent,
     AdminOptionsComponent,
     ProductosComponent,
-    ProductosGrafComponent
+    ProductosGrafComponent,
+    GuiaAnillosComponent,
+    EnviosComponent,
+    CambiosComponent,
+    FacturacionComponent,
+    FormasPagoComponent
   ],
   imports: [
     BrowserModule,

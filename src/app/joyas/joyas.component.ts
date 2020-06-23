@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-joyas',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JoyasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  verJoya(item: any){
+
+    this.router.navigate([ '/joya', item ]);
+
+  }
 
   ngOnInit(): void {
   }

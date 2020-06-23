@@ -1,7 +1,8 @@
 <div class="container mt-5 pt-5">
-    <ngb-alert id="uno" (close)="cerrar('uno')">Algunos de los campos no han sido llenados o estan incorrectos revisalos otra vez</ngb-alert>
-    <h3 class="text-center">Registrarse</h3>
-    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <div class="container col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <ngb-alert id="uno" (close)="cerrar('uno')">Algunos de los campos no han sido llenados o estan incorrectos revisalos otra vez</ngb-alert>
+    <h2 class="text-center margin">Registrarse</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="mt-4">
         <div class="form-group">
             <label for="exampleInputEmail1">Dirección email</label>
             <input type="email" class="form-control" formControlName="email" placeholder="juan@hotmail.com" required>
@@ -19,15 +20,17 @@
             <button type="submit" class="btn btn-primary btn-block">Registrate</button>
         </div>
     </form>
-    <div class="form-group">
+    <div class="form-group text-center">
         <button (click)="onGoogleLogin()" class="btn btn-primary btn-sm"><i class="fab fa-google"></i> Entra con Google</button>
     </div>
-    <div class="form-group">
+    <div class="form-group text-center">
         <a [routerLink]="['/sms-login']" routerLinkActive="router-link-active" class="btn btn-info btn-sm"> Entra con SMS</a>
     </div>
 
-    <p>¿Ya tienes una cuenta?
+    <p class="text-center">¿Ya tienes una cuenta?
         <a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
     </p>
+    </div>
+    
 
 </div>
