@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from './../services/firestore.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-productos',

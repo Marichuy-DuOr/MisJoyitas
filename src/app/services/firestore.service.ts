@@ -28,6 +28,10 @@ export class FirestoreService {
   public getProductos() {
     return this.firestore.collection('productos').snapshotChanges();
   }
+  
+  async getProductos2() {
+    return this.firestore.collection('productos').snapshotChanges();
+  }
 
   public updateProducto(documentId: string, data: any) {
     return this.firestore.collection('productos').doc(documentId).set(data);

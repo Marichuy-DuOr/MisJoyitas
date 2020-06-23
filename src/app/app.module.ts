@@ -32,6 +32,7 @@ import { CanAdminGuard } from './auth/guards/can-admin-guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminOptionsComponent } from './admin-options/admin-options.component';
 import { ProductosComponent } from './productos/productos.component';
+import { ProductosGrafComponent } from './productos-graf/productos-graf.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { ProductosComponent } from './productos/productos.component';
     SetRoleComponent,
     SmsLoginComponent,
     AdminOptionsComponent,
-    ProductosComponent
+    ProductosComponent,
+    ProductosGrafComponent
   ],
   imports: [
     BrowserModule,
