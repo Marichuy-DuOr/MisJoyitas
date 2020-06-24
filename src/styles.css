@@ -212,6 +212,15 @@ footer {
     margin: 1rem;
 }
 
+.a-color {
+    color: #000;
+}
+
+.a-color:hover {
+    color: #000;
+    font-weight: bold;
+}
+
 /* --- Register y Login ---*/
 .margin{
   margin-top: 30px;
@@ -224,6 +233,7 @@ footer {
   margin-top: 120px;
   font-family: 'Lobster';
   font-size: 40px;
+  text-align: center;
 }
 
 /* --- Preguntas Frecuentes --- */
@@ -247,5 +257,22 @@ footer {
 }
 
 /* --- Joya --- */
+
+/* --- About --- */
+.about{
+    font-family: 'Lobster';
+    font-size: 30px;
+    text-align: center;
+}
+
+.circle{ 
+    width:200px;
+    height:200px; 
+    border-radius: 100px;
+    margin: 20px;
+    -moz-box-shadow: 0 0 5px 5px #888;
+    -webkit-box-shadow: 0 0 5px 5px#888;
+    box-shadow: 0 0 5px 5px #888;
+}
 
 @media only screen and (min-width: 640px) {}
