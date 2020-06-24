@@ -260,7 +260,7 @@ export class ProductosGrafComponent implements OnInit {
       case '20':
         this.PulserasNno++;
         break;
-      case '22':
+      case '21':
         this.ColgantesNino++;
         break;
       case '22':

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +27,7 @@ export class FirestoreService {
   public getProductos() {
     return this.firestore.collection('productos').snapshotChanges();
   }
-  
+
   async getProductos2() {
     return this.firestore.collection('productos').snapshotChanges();
   }
@@ -40,4 +39,22 @@ export class FirestoreService {
   public deleteProducto(documentId: string) {
     return this.firestore.collection('productos').doc(documentId).delete();
   }
+
+  public consultaTipo(tipoJoya: string) {
+    return this.firestore.collection('productos', ref => ref.where('tipo', '==', tipoJoya)).snapshotChanges();
+  }
+  /*
+    async existe(documentId: string): Promise<boolean> {
+    // public existe(documentId: string) {
+      let band: any;
+      const docRef = this.afs.collection('users').doc(documentId);
+      docRef.get().subscribe(function(doc) {
+          if (doc.exists) {
+            band = true;
+          } else {
+            band = false;
+          }
+      });
+      return band;
+    }*/
 }

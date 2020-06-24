@@ -76,7 +76,7 @@
     </form>
 </div>
 
-<div class="row mt-5 mx-5">
+<div class="row mt-5 mx-5" *ngIf="productos; else loading">
     <div class="col">
         <div class="table-responsive">
             <table class="table">
@@ -132,3 +132,11 @@
         </div>
     </div>
 </div>
+
+<ng-template #loading>
+    <div class="row text-center mt-5 pt-5">
+        <div class="col">
+            <i class="fas fa-sync-alt fa-5x fa-spin"></i>
+        </div>
+    </div>
+</ng-template>
