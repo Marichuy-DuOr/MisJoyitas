@@ -17,11 +17,11 @@
         </div>
         <ngb-alert id="dos" (close)="cerrar('dos')">Las contraseñas no coinciden, intenta otra vez</ngb-alert>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Registrate</button>
+            <button type="submit" class="btn btn-info btn-block">Registrate</button>
         </div>
     </form>
     <div class="form-group text-center">
-        <button (click)="onGoogleLogin()" class="btn btn-primary btn-sm"><i class="fab fa-google"></i> Entra con Google</button>
+        <button (click)="onGoogleLogin()" class="btn btn-info btn-sm"><i class="fab fa-google"></i> Entra con Google</button>
     </div>
     <div class="form-group text-center">
         <a [routerLink]="['/sms-login']" routerLinkActive="router-link-active" class="btn btn-info btn-sm"> Entra con SMS</a>
