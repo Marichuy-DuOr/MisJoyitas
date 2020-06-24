@@ -1,7 +1,7 @@
 <div class="container" *ngIf="productos; else loading">
     <div class="row filtrar">
         <div class="col">
-            <p class="titulo-joyas">Joyas</p>
+            <p class="titulo-joyas accesibilidad">Joyas</p>
         </div>
     </div>
     <div class="row ">
@@ -47,9 +47,9 @@
                 <img class="card-img-top" [src]="producto.data.imagen" alt="Card image cap">
                 <div class="card-body">
                     <a class="dropdown-item" [routerLink]="['/joya',producto.id]">
-                        <h5 class="card-title"><strong>{{producto.data.nombre}}</strong></h5>
+                        <h5 class="card-title accesibilidad"><strong>{{producto.data.nombre}}</strong></h5>
                     </a>
-                    <p class="card-text">${{producto.data.venta}}</p>
+                    <p class="card-text accesibilidad">${{producto.data.venta}}</p>
                     <a href="#" class="btn btn-danger">Agregar al carrito</a>
                 </div>
             </div>

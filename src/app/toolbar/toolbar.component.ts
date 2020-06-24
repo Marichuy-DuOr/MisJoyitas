@@ -10,9 +10,22 @@ import { Observable } from 'rxjs';
   styles: []
 })
 export class ToolbarComponent implements OnInit {
+
+  
+  synthesis: any;
+  utterance: any;
+  prhase: any;
+  
   public user$: Observable<User> = this.authSvc.afAuth.user;
 
-  constructor(private authSvc: AuthService, private router: Router) { }
+  constructor(private authSvc: AuthService, private router: Router) {
+    if ('speechSynthesis' in window) {
+      this.synthesis = window.speechSynthesis;
+      this.utterance = new SpeechSynthesisUtterance('Que pedo');
+    } else {
+      console.log('Explorador no soporta speechSynthesis.');
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -23,5 +36,24 @@ export class ToolbarComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  speak() {
+    this.prhase = '';
+    for (let i = 0; i < document.getElementsByClassName('accesibilidad').length; i++) {
+      this.prhase = this.prhase.concat(document.getElementsByClassName('accesibilidad')[i].innerHTML);
+      this.prhase = this.prhase.concat(', ');
+    }
+    this.utterance.text = this.prhase;
+    if (this.synthesis.paused) {
+      this.synthesis.resume();
+    } else {
+      this.synthesis.cancel();
+      this.synthesis.speak(this.utterance);
+    }
+  }
+
+  pause() {
+    this.synthesis.pause();
   }
 }

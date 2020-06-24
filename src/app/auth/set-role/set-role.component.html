@@ -3,8 +3,8 @@
         <div class="col-6">
             <ngb-alert id="uno" type="danger" (close)="cerrar('uno')">Selecciona primero algun usuario.</ngb-alert>
             <ngb-alert id="dos" type="success" (close)="cerrar('dos')">Se cambio el rol correctamente</ngb-alert>
-            <h1>Usuarios</h1>
-            <form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
+            <h1 class="accesibilidad">Usuarios</h1>
+            <form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm" class="accesibilidad">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
                     <input type="text" class="form-control" formControlName="email" readonly>
@@ -29,15 +29,15 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Email/Telefono</th>
-                        <th scope="col">Rol</th>
-                        <th scope="col">Editar</th>
+                        <th scope="col" class="accesibilidad">Email/Telefono</th>
+                        <th scope="col" class="accesibilidad">Rol</th>
+                        <th scope="col" class="accesibilidad">Editar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users">
-                        <td *ngIf="user.data.email">{{user.data.email}}</td>
-                        <td *ngIf="user.data.email">{{user.data.role}}</td>
+                        <td *ngIf="user.data.email" class="accesibilidad">{{user.data.email}}</td>
+                        <td *ngIf="user.data.email" class="accesibilidad">{{user.data.role}}</td>
                         <td *ngIf="user.data.email">
                             <div class="btn-group mr-2" role="group" aria-label="Second group">
                                 <button type="button" class="btn btn-secondary" (click)="editUser(user.id)">Editar</button>

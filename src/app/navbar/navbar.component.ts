@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   public user$: Observable<User> = this.authSvc.afAuth.user;
 
-  constructor( private authSvc: AuthService ) {  }
+  constructor( private authSvc: AuthService ) { }
 
   ngOnInit(): void {
   }
