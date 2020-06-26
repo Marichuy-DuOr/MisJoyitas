@@ -43,18 +43,9 @@ export class FirestoreService {
   public consultaTipo(tipoJoya: string) {
     return this.firestore.collection('productos', ref => ref.where('tipo', '==', tipoJoya)).snapshotChanges();
   }
-  /*
-    async existe(documentId: string): Promise<boolean> {
-    // public existe(documentId: string) {
-      let band: any;
-      const docRef = this.afs.collection('users').doc(documentId);
-      docRef.get().subscribe(function(doc) {
-          if (doc.exists) {
-            band = true;
-          } else {
-            band = false;
-          }
-      });
-      return band;
-    }*/
+
+  public consultaCupon(cod: string) {
+    return this.firestore.collection('Cupones', ref => ref.where('Codigo', '==', cod)).snapshotChanges();
+  }
+
 }

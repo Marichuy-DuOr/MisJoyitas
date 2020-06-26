@@ -81,6 +81,9 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link accesibilidad" [routerLink]="['about']">Acerca de</a>
             </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link accesibilidad" [routerLink]="['ofertas']">Ofertas</a>
+            </li>
 
             <div *ngIf="user$ | async as user">
                 <li class="nav-item">
