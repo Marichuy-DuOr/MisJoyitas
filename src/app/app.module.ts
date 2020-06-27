@@ -38,7 +38,9 @@ import { EnviosComponent } from './envios/envios.component';
 import { CambiosComponent } from './cambios/cambios.component';
 import { FacturacionComponent } from './facturacion/facturacion.component';
 import { FormasPagoComponent } from './formas-pago/formas-pago.component';
+import { OfertasComponent } from './QR/ofertas/ofertas.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,8 @@ import { FormasPagoComponent } from './formas-pago/formas-pago.component';
     EnviosComponent,
     CambiosComponent,
     FacturacionComponent,
-    FormasPagoComponent
+    FormasPagoComponent,
+    OfertasComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,8 @@ import { FormasPagoComponent } from './formas-pago/formas-pago.component';
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     AngularFireAuthModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [
     CanGuard,

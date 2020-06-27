@@ -24,6 +24,7 @@ import { FormasPagoComponent } from './formas-pago/formas-pago.component';
 
 import { CanGuard } from './auth/guards/can-guard';
 import { CanAdminGuard } from './auth/guards/can-admin-guard';
+import { OfertasComponent } from './QR/ofertas/ofertas.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'envios', component: EnviosComponent},
   {path: 'cambios', component: CambiosComponent},
   {path: 'pagos', component: FormasPagoComponent},
+  {path: 'ofertas', component: OfertasComponent},
   {path: 'set-role', component: SetRoleComponent, canActivate: [CanAdminGuard]},
   {path: 'admin-options', component: AdminOptionsComponent, canActivate: [CanAdminGuard]},
   {path: 'productos', component: ProductosComponent, canActivate: [CanAdminGuard]},

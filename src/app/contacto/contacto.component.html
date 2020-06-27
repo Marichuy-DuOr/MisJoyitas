@@ -1,1 +1,26 @@
-<p>contacto works!</p>
+<div class="container mt-5 pt-5">
+    <div class="container col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <ngb-alert id="uno" (close)="cerrar('uno')">Algunos de los campos no han sido llenados o estan incorrectos revisalos otra vez</ngb-alert>
+        <h2 class="text-center margin accesibilidad accesibilidad">Mandanos tu retroalimentacion!</h2>
+        <form [formGroup]="contactForm" (ngSubmit)="send()" class="mt-4">
+
+            <div class="form-group">
+                <label class="accesibilidad" for="name">Nombre</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label class="accesibilidad" for="email">Dirección email</label>
+                <input type="email" class="form-control" formControlName="email" placeholder="juan@hotmail.com" name="email" required>
+                <small id="emailHelp" class="form-text text-muted">No compartiremos tu correo con nadie</small>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="comment" placeholder="Escribe tu comentario" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block accesibilidad">Mandar</button>
+            </div>
+        </form>
+    </div>
+</div>
