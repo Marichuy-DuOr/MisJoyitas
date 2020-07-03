@@ -28,19 +28,40 @@ export class OfertasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  generarQR() {
+    this.email.getCupon('http://localhost:3000/cupones').subscribe( (Cupones) => {
+      console.log(Cupones);
+      let seleccionado: string;
+      this.svg = null;
+      //          Math.floor(Math.random() * (max - min + 1) + min);
+      const val = Math.floor(Math.random() * (4 - 0 + 1) + 0);
+      console.log (val);
+      for (let i = 0; i < 17; i++){
+        if (val === i) {
+          seleccionado = Cupones[i].Codigo + " " + Cupones[i].Texto;
+        }
+      }
+      console.log(seleccionado);
+      this.email.getQR('https://api.qrserver.com/v1/create-qr-code/?size=250x250&format=svg&data=' + seleccionado)
+      .subscribe((res: any) => {
+        this.svg = this.sanitizer.bypassSecurityTrustHtml(res);
+      });
+    });
+  }
 
+/*
   generarQR() {
     let seleccionado: string;
     this.svg = null;
-    const val = Math.random() * (4 - 0) + 0;
-    if (val === 0) {
+    const val = Math.floor(Math.random() * (4 - 1 + 1) + 1);
+    console.log (val);
+    if (val === 1) {
       seleccionado = 'rZpekjqqoq';
-    } else if (val === 1) {
-      seleccionado = 'yqnTMaIMnE';
     } else if (val === 2) {
-      seleccionado = 'BVHzEaHDvZ';
+      seleccionado = 'yqnTMaIMnE';
     } else if (val === 3) {
+      seleccionado = 'BVHzEaHDvZ';
+    } else if (val === 4) {
       seleccionado = 'oljgsqxJCb';
     } else {
       seleccionado = 'qPDVcsKCaz';
@@ -63,5 +84,6 @@ export class OfertasComponent implements OnInit {
       });
     });
   }
+*/
 
 }
