@@ -25,16 +25,19 @@ import { FormasPagoComponent } from './formas-pago/formas-pago.component';
 import { CanGuard } from './auth/guards/can-guard';
 import { CanAdminGuard } from './auth/guards/can-admin-guard';
 import { OfertasComponent } from './QR/ofertas/ofertas.component';
+import { VentasAdminComponent } from './ventas-admin/ventas-admin.component';
+import { MisComprasComponent } from './mis-compras/mis-compras.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'joyas/:id', component: JoyasComponent},
-  {path: 'joya/:id', component: JoyaComponent},
+  {path: 'joyas/:id', component: JoyasComponent, canActivate: [CanGuard]},
+  {path: 'joya/:id', component: JoyaComponent, canActivate: [CanGuard]},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'carrito', component: CarritoComponent},
+  {path: 'carrito', component: CarritoComponent, canActivate: [CanGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'buscador', component: BuscadorComponent},
+  {path: 'buscador/:nomjoya', component: BuscadorComponent, canActivate: [CanGuard]},
+  {path: 'mis-compras', component: MisComprasComponent, canActivate: [CanGuard]},
   {path: 'wiki', component: WikiComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'register', component: RegisterComponent},
@@ -44,11 +47,12 @@ const routes: Routes = [
   {path: 'envios', component: EnviosComponent},
   {path: 'cambios', component: CambiosComponent},
   {path: 'pagos', component: FormasPagoComponent},
-  {path: 'ofertas', component: OfertasComponent},
+  {path: 'ofertas', component: OfertasComponent, canActivate: [CanGuard]},
   {path: 'set-role', component: SetRoleComponent, canActivate: [CanAdminGuard]},
   {path: 'admin-options', component: AdminOptionsComponent, canActivate: [CanAdminGuard]},
   {path: 'productos', component: ProductosComponent, canActivate: [CanAdminGuard]},
   {path: 'productos-graf', component: ProductosGrafComponent, canActivate: [CanAdminGuard]},
+  {path: 'ventas-admin', component: VentasAdminComponent, canActivate: [CanAdminGuard]},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];

@@ -6,6 +6,9 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 ">
+            <ngb-alert style="display: none;" id="uno" type="danger" (close)="cerrar('uno')">No llenaste correctamente el campo cantidad</ngb-alert>
+            <ngb-alert style="display: none;" id="dos" type="success" (close)="cerrar('dos')">Se agregó al carrito</ngb-alert>
+
             <p class="h2 accesibilidad"><strong>{{this.joya.nombre}}</strong> </p>
             <hr>
             <p class="h1 accesibilidad">${{this.joya.venta}}</p>
@@ -26,16 +29,30 @@
                 <small class="accesibilidad">Tienes problemas con tu talla <a [routerLink]="[ '/guianillos'] ">Da click aqui</a></small>
             </div>
             <!--Fin *ngIf-->
-
+            <!--
             <div class="input-group col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
                 <div class="input-group-prepend ">
                     <span class="input-group-text accesibilidad">Cantidad</span>
                 </div>
                 <input type="text " class="form-control ">
             </div>
-            <button type="button " class="btn btn-info btn-lg btn-block mt-2 accesibilidad">
+            <button class="btn btn-info btn-lg btn-block mt-2 accesibilidad" (click)="push(this.idDoc)">
                 Añadir al carrito
-            </button>
+            </button>-->
+
+            <form [formGroup]="cantidadForm" (ngSubmit)="push(this.idDoc)" class="mt-4 accesibilidad">
+                <div class="input-group col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
+                    <div class="input-group-prepend ">
+                        <span class="input-group-text accesibilidad">Cantidad</span>
+                    </div>
+                    <input type="text" class="form-control " formControlName="cantidad">
+                </div>
+                <div class="col">
+                    <input type="submit" class="btn btn-info btn-lg btn-block mt-2 accesibilidad" value="Añadir al carrito">
+                </div>
+
+            </form>
+
         </div>
     </div>
     <div class="row mt-2 accesibilidad">

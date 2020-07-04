@@ -1,0 +1,60 @@
+<div class="container mt-5 pt-5">
+    <h3>Todas las ventas</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let venta of ventas">
+                    <th>{{venta.data.cliente}}</th>
+                    <th>{{venta.data.fecha | date: 'dd/MM/yyyy HH:mm'}}</th>
+                    <th>$ {{venta.data.total}}</th>
+                    <td>
+                        <button class="btn btn-lg btn-outline-primary" (click)="open(content, venta.data.productos)"><i class="far fa-list-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Detalles de la venta</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of this.ventaAux">
+                        <th>{{this.item.nombre}}</th>
+                        <th>{{this.item.idProducto}}</th>
+                        <th><img src="{{this.item.imagen}}" height="100px"></th>
+                        <th>{{this.item.cantidad}}</th>
+                        <th>${{this.item.precio}}</th>
+                        <th>${{this.item.total}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</ng-template>

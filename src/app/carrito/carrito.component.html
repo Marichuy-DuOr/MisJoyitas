@@ -1,1 +1,46 @@
-<p>carrito works!</p>
+<div *ngIf="!this.compraTerminada; else finish">
+    <div class="container" *ngIf="this.elTotal != 0; else loading">
+        <div class="row filtrar">
+            <div class="col">
+                <p class="titulo-joyas accesibilidad">Mi carrito</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="card-columns">
+                <div class="card" *ngFor="let producto of productos">
+                    <img class="card-img-top" [src]="producto.imagen" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title accesibilidad"><strong>{{producto.nombre}}</strong></h5>
+                        <p class="card-text accesibilidad">Cantidad: {{producto.cantidad}}</p>
+                        <p class="card-text accesibilidad">Precio: ${{producto.precio}}</p>
+                        <p class="card-text accesibilidad">Total: ${{producto.total}}</p>
+
+                        <a (click)="pull(producto.idProducto)" class="btn btn-danger">Eliminar del carrito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h4>Total ${{this.elTotal}}</h4>
+            <a (click)="venta()" class="btn btn-danger">Terminar compra</a>
+        </div>
+    </div>
+</div>
+
+<ng-template #finish>
+    <div class="row text-center mt-5 pt-5">
+        <div class="col mt-5 pt-5 mb-5">
+            <h1>Tu compra se ha realizado con éxito!!</h1>
+            <h3>Mientras esperas a que llegue tu pedido, puedes seguir mirando los productos que tenemos para tí.</h3>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #loading>
+    <div class="row text-center mt-5 pt-5">
+        <div class="col mt-5 pt-5 mb-5">
+            <h1>No haz escogido ningún producto!!</h1>
+            <h3>Regresa cuando hayas visto la variedad de cosas que tenemos para ti.</h3>
+        </div>
+    </div>
+</ng-template>

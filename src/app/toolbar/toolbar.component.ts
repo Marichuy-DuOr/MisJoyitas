@@ -3,6 +3,7 @@ import { User } from './../shared/models/user';
 import { AuthService } from './../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CarritoService } from '../services/carrito.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,14 +12,13 @@ import { Observable } from 'rxjs';
 })
 export class ToolbarComponent implements OnInit {
 
-  
   synthesis: any;
   utterance: any;
   prhase: any;
-  
+
   public user$: Observable<User> = this.authSvc.afAuth.user;
 
-  constructor(private authSvc: AuthService, private router: Router) {
+  constructor(private authSvc: AuthService, private router: Router, public carritoService: CarritoService) {
     if ('speechSynthesis' in window) {
       this.synthesis = window.speechSynthesis;
       this.utterance = new SpeechSynthesisUtterance('Que pedo');
@@ -31,6 +31,7 @@ export class ToolbarComponent implements OnInit {
   }
   async onLogout() {
     try {
+      this.carritoService.newCart();
       await this.authSvc.logout();
       this.router.navigate(['/login']);
     } catch (error) {
