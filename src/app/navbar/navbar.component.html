@@ -84,6 +84,9 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link accesibilidad" [routerLink]="['ofertas']">Ofertas</a>
             </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link accesibilidad" [routerLink]="['mis-compras']">Mis compras</a>
+            </li>
 
             <div *ngIf="user$ | async as user">
                 <li class="nav-item">
@@ -95,8 +98,8 @@
 
         </ul>
         <div class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Buscar Joyas" aria-label="Buscar">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
+            <input class="form-control mr-sm-2" type="text" placeholder="Buscar joya .." #buscartexto (keyup.enter)=buscarJoya(buscartexto.value) />
+            <button (click)="buscarJoya(buscartexto.value)" class="btn btn-outline-success my-2 my-sm-0" type="button">Buscar</button>
         </div>
     </div>
 </nav>

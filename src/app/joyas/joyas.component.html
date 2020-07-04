@@ -50,7 +50,8 @@
                         <h5 class="card-title accesibilidad"><strong>{{producto.data.nombre}}</strong></h5>
                     </a>
                     <p class="card-text accesibilidad">${{producto.data.venta}}</p>
-                    <a href="#" class="btn btn-danger">Agregar al carrito</a>
+
+                    <a (click)="push(producto.id)" class="btn btn-danger">Agregar al carrito</a>
                 </div>
             </div>
         </div>

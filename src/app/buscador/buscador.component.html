@@ -1,1 +1,12 @@
-<p>buscador works!</p>
+<div *ngIf="bandera; else elseBlock">
+    <div *ngFor="let joya of joyas">
+        <app-joya [idDoc]=joya.id></app-joya>
+    </div>
+</div>
+
+
+<ng-template #elseBlock>
+    <div class="mt-5 pt-5">
+        <div class="alert alert-info">No se encontró {{nomjoya}} <br> Revisa otra vez lo que escribiste</div>
+    </div>
+</ng-template>

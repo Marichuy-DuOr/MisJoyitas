@@ -41,6 +41,8 @@ import { FormasPagoComponent } from './formas-pago/formas-pago.component';
 import { OfertasComponent } from './QR/ofertas/ofertas.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { VentasAdminComponent } from './ventas-admin/ventas-admin.component';
+import { MisComprasComponent } from './mis-compras/mis-compras.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { HttpClientModule } from '@angular/common/http';
     CambiosComponent,
     FacturacionComponent,
     FormasPagoComponent,
-    OfertasComponent
+    OfertasComponent,
+    VentasAdminComponent,
+    MisComprasComponent,
   ],
   imports: [
     BrowserModule,

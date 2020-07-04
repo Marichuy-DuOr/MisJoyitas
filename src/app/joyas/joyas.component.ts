@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FirestoreService } from '../services/firestore.service';
+import { CarritoService } from '../services/carrito.service';
 
 @Component({
   selector: 'app-joyas',
@@ -11,7 +12,12 @@ export class JoyasComponent implements OnInit {
 
   public productos = [];
 
-  constructor(private router: Router, public activatedRoute: ActivatedRoute, private firestoreService: FirestoreService) {
+  constructor(
+    private router: Router,
+    public activatedRoute: ActivatedRoute,
+    private firestoreService: FirestoreService,
+    public carritoService: CarritoService
+    ) {
     this.activatedRoute.params.subscribe( params => {
       this.productos = [];
       if ( params['id'] === '1') {
@@ -62,4 +68,8 @@ export class JoyasComponent implements OnInit {
 
   }
 
+  push(id: string) {
+    this.carritoService.pushCart(id, '1');
+    console.log('Se agrego gggg-> ', id);
+  }
 }
