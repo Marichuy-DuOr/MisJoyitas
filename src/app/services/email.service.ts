@@ -19,4 +19,8 @@ export class EmailService {
     return this.httpClient.get(url, { headers: this.headers, responseType: 'text' });
   }
 
+  getCupon(url: string) {
+    return this.httpClient.get(url);
+  }
+
 }
