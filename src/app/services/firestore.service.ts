@@ -66,6 +66,10 @@ export class FirestoreService {
     return this.firestore.collection('ventas').snapshotChanges();
   }
 
+
+  public getCupones() {
+    return this.firestore.collection('Cupones').snapshotChanges();
+
   public Compra(data: {
     cantidad: number,
     idProducto: string
@@ -109,6 +113,7 @@ export class FirestoreService {
 
   public updateExistencia(documentId: string, data: any) {
     return this.firestore.collection('existencias').doc(documentId).set(data);
+
   }
 }
 
