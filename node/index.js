@@ -49,7 +49,7 @@ async function sendMail(feedback, callback) {
           pass: 'Morrowind3'
         }
     });
-    
+
     var mailOptions = {
         from: 'drosalesfl@gmail.com',
         to: 'drosalesfl@gmail.com',
@@ -77,26 +77,3 @@ app.get("/cupones", (req, res) => {
     console.log('Error getting documents', err);
   });
 });
-
-/*
-app.get("/cupones/:id", (req, res) => {
-  if (id === 1){
-    db.collection('Cupones').get().
-  }
-
-  var datos = '';
-  //Consigo el contenido de la colleccion buscandola por nombre entonces (then)
-  db.collection('Cupones').get().then((snapshot) => {
-    //Un for que recorre todos los documentos de la coleccion
-    snapshot.forEach( (doc) => {
-      //Muestra en consola la id de cada documento y luego muestra los datos almacenados en cada uno
-      console.log(doc.id, '=>', doc.data());
-      datos = datos.concat(doc.datos);
-    });
-    res.send(datos);
-  }).catch((err) => {
-    //Si hay error muestra esto
-    console.log('Error getting documents', err);
-  }); 
-});
-*/

@@ -11,8 +11,11 @@ export class ProductosGrafComponent implements OnInit {
 
   ctx: any;
   ctx2: any;
+  ctx3: any;
 
   public productos = [];
+  public productosVendidos = [];
+  public ventas = [];
   public oro = 0;
   public plata = 0;
 
@@ -53,11 +56,28 @@ export class ProductosGrafComponent implements OnInit {
           id: productoData.payload.doc.id,
           data: productoData.payload.doc.data(),
         });
+        this.productosVendidos.push({
+          id: productoData.payload.doc.id,
+          cantidad: 0,
+          total: 0,
+        });
         this.contarMaterial(productoData.payload.doc.data().material);
         this.contarTipo(productoData.payload.doc.data().tipo);
       });
       this.crearPie();
       this.crearBarras();
+    });
+
+    this.firestoreService.getVentas().subscribe( ( ventasSnapshot ) => {
+      ventasSnapshot.forEach( ( ventasData: any ) => {
+        this.ventas.push({
+          id: ventasData.payload.doc.id,
+          data: ventasData.payload.doc.data()
+        });
+        this.CalculoVentas(ventasData.payload.doc.data().productos);
+      });
+      console.log (this.ventas);
+      this.crearVentas();
     });
   }
 
@@ -87,6 +107,78 @@ export class ProductosGrafComponent implements OnInit {
       },
       options: {
         responsive: true
+      }
+    });
+  }
+
+  crearVentas() {
+    this.ctx3 = document.getElementById('sales');
+    this.ctx3.getContext('2d');
+    const myChart = new Chart(this.ctx3, {
+      type: 'bar',
+      data: {
+        labels: [
+          this.productos[0].data.nombre,
+          this.productos[1].data.nombre,
+          this.productos[2].data.nombre,
+          this.productos[3].data.nombre,
+          this.productos[4].data.nombre,
+          this.productos[5].data.nombre,
+          this.productos[6].data.nombre,
+          this.productos[7].data.nombre,
+          this.productos[8].data.nombre,
+          this.productos[9].data.nombre,
+        ],
+        datasets: [{
+          label: 'Productos',
+          data: [
+            this.productosVendidos[0].cantidad,
+            this.productosVendidos[1].cantidad,
+            this.productosVendidos[2].cantidad,
+            this.productosVendidos[3].cantidad,
+            this.productosVendidos[4].cantidad,
+            this.productosVendidos[5].cantidad,
+            this.productosVendidos[6].cantidad,
+            this.productosVendidos[7].cantidad,
+            this.productosVendidos[8].cantidad,
+            this.productosVendidos[9].cantidad
+          ],
+          backgroundColor: [
+            'rgba(255, 195, 18, 0.2)',
+            'rgba(18, 203, 196, 0.2)',
+            'rgba(237, 76, 103, 0.2)',
+            'rgba(163, 203, 56, 0.2)',
+            'rgba(217, 128, 250, 0.2)',
+            'rgba(238, 90, 36, 0.2)',
+            'rgba(6, 82, 221, 0.2)',
+            'rgba(131, 52, 113, 0.2)',
+            'rgba(234, 32, 39, 0.2)',
+            'rgba(27, 20, 100, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 195, 18, 1)',
+            'rgba(18, 203, 196, 1)',
+            'rgba(237, 76, 103, 1)',
+            'rgba(163, 203, 56, 1)',
+            'rgba(217, 128, 250, 1)',
+            'rgba(238, 90, 36, 1)',
+            'rgba(6, 82, 221, 1)',
+            'rgba(131, 52, 113, 1)',
+            'rgba(234, 32, 39, 1)',
+            'rgba(27, 20, 100, 1)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
     });
   }
@@ -200,7 +292,7 @@ export class ProductosGrafComponent implements OnInit {
   }
 
   contarMaterial(material: string) {
-    if (material == 'oro') {
+    if (material === 'oro') {
       this.oro++;
     } else {
       this.plata++;
@@ -269,5 +361,15 @@ export class ProductosGrafComponent implements OnInit {
     }
   }
 
-}
+  CalculoVentas(listado) {
+    console.log (listado);
+    for (let i = 0; i < listado.length; i ++) {
+      for (let j = 0; j < this.productosVendidos.length; j++) {
+        if (listado[i].idProducto === this.productosVendidos[j].id) {
+          this.productosVendidos[j].cantidad = this.productosVendidos[j].cantidad + parseInt(listado[i].cantidad, 10);
+        }
+      }
+    }
+  }
 
+}
