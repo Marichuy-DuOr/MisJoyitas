@@ -34,7 +34,7 @@ export class OfertasComponent implements OnInit {
       let seleccionado: string;
       this.svg = null;
       //          Math.floor(Math.random() * (max - min + 1) + min);
-      const val = Math.floor(Math.random() * (4 - 0 + 1) + 0);
+      const val = Math.floor(Math.random() * (17 - 0 + 1) + 0);
       console.log (val);
       for (let i = 0; i < 17; i++){
         if (val === i) {

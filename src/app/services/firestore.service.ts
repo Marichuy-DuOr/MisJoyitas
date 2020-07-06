@@ -5,7 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class FirestoreService {
-  
+
   constructor(private firestore: AngularFirestore ) { }
 
   public createProducto(data: {
@@ -63,6 +63,10 @@ export class FirestoreService {
 
   public getVentas() {
     return this.firestore.collection('ventas').snapshotChanges();
+  }
+
+  public getCupones() {
+    return this.firestore.collection('Cupones').snapshotChanges();
   }
 }
 
