@@ -66,6 +66,10 @@ body {
     color: #ffffff;
 }
 
+.separacion {
+    margin-right: 7rem;
+}
+
 
 /* --- Navbar ---*/
 
@@ -256,7 +260,19 @@ footer {
     cursor: pointer;
 }
 
-/* --- Joya --- */
+/* --- Carrito --- */
+.top2{
+    font-family: 'Lobster';
+    font-size: 40px;
+    text-align: center;
+  }
+
+.con{
+    background-color: white;
+    -moz-box-shadow: 0 0 5px 5px #888;
+    -webkit-box-shadow: 0 0 5px 5px#888;
+    box-shadow: 0 0 5px 5px #888;
+}
 
 /* --- About --- */
 .about{

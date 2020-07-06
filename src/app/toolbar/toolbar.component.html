@@ -14,15 +14,14 @@
     <p class="h2 title accesibilidad">Mis Joyitas</p>
     <div class="spacer"></div>
 
-    <a aria-label="Carrito" [routerLink]="['carrito']" class="ico">
-        <i class="fas fa-2x fa-cart-plus"></i>
-    </a>
+    
     <!--
     <a aria-label="Carrito" [routerLink]="['login']" class="ico">
       <i  class="fas fa-2x fa-sign-in-alt"></i>
   </a>
   -->
-    <div *ngIf="user$ | async as user; else login">
+
+   <!-- <div *ngIf="user$ | async as user; else login">
 
         <a class="ico accesibilidad" (click)="onLogout()" style="cursor: pointer">Logout</a>
         <div *ngIf="user.email; else telef">
@@ -36,8 +35,44 @@
 
     <ng-template #login>
         <a [routerLink]="['/login']" class="ico">
-            <i class="fas fa-2x fa-sign-in-alt"></i></a>
-        <a class="ico accesibilidad" style="text-decoration:none;" [routerLink]="['/register']">Register</a>
+            <i class="fas fa-2x fa-sign-in-alt"></i>
+        </a>
+        <a class="ico accesibilidad" style="text-decoration:none;" [routerLink]="['/register']">
+            Register
+        </a>
     </ng-template>
+    -->
+    <a aria-label="Carrito" [routerLink]="['carrito']" class="ico">
+        <i class="fas fa-1x fa-cart-plus"></i>
+     </a>
+    <ul class="navbar-nav ">
+    <li class="nav-item dropdown mb-1 separacion" #login>
+        <a class="nav-link dropdown-toggle ico" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-1x fa-sign-in-alt"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item accesibilidad" [routerLink]="['/login']">
+                Login
+            </a>
+            <a class="dropdown-item accesibilidad" [routerLink]="['/register']">
+                Register
+            </a>
+            <div *ngIf="user$ | async as user; else login">
+
+                <div *ngIf="user.email; else telef">
+        
+                    <a class="dropdown-item accesibilidad">{{ user.email }}</a>
+                </div>
+                <ng-template #telef>
+                    <a class="dropdown-item accesibilidad">{{ user.phoneNumber }}</a>
+                </ng-template>
+                <a class="dropdown-item accesibilidad" (click)="onLogout()" style="cursor: pointer">
+                    Logout
+                </a>
+            </div>
+        </div>
+      </li>
+    </ul>
+      
 
 </div>

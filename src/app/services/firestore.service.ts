@@ -69,7 +69,7 @@ export class FirestoreService {
 
   public getCupones() {
     return this.firestore.collection('Cupones').snapshotChanges();
-
+  }
   public Compra(data: {
     cantidad: number,
     idProducto: string
