@@ -1,9 +1,9 @@
-<div class="container mt-5 pt-5">
+<div class="container ">
     <div class="row">
         <div class="col-6">
             <ngb-alert id="uno" type="danger" (close)="cerrar('uno')">Selecciona primero algun usuario.</ngb-alert>
             <ngb-alert id="dos" type="success" (close)="cerrar('dos')">Se cambio el rol correctamente</ngb-alert>
-            <h1 class="accesibilidad">Usuarios</h1>
+            <h1 class="accesibilidad top">Usuarios</h1>
             <form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm" class="accesibilidad">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
@@ -24,7 +24,7 @@
             </form>
         </div>
 
-        <div class="col">
+        <div class="col pos mb-5">
 
             <table class="table">
                 <thead>
