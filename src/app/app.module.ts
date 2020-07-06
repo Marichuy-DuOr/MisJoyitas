@@ -43,6 +43,8 @@ import { OfertasComponent } from './QR/ofertas/ofertas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VentasAdminComponent } from './ventas-admin/ventas-admin.component';
 import { MisComprasComponent } from './mis-compras/mis-compras.component';
+import { ComprasComponent } from './compras/compras.component';
+import { ExistenciasComponent } from './existencias/existencias.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { MisComprasComponent } from './mis-compras/mis-compras.component';
     OfertasComponent,
     VentasAdminComponent,
     MisComprasComponent,
+    ComprasComponent,
+    ExistenciasComponent,
   ],
   imports: [
     BrowserModule,

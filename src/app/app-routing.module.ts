@@ -27,6 +27,8 @@ import { CanAdminGuard } from './auth/guards/can-admin-guard';
 import { OfertasComponent } from './QR/ofertas/ofertas.component';
 import { VentasAdminComponent } from './ventas-admin/ventas-admin.component';
 import { MisComprasComponent } from './mis-compras/mis-compras.component';
+import { ComprasComponent } from './compras/compras.component';
+import { ExistenciasComponent } from './existencias/existencias.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -53,6 +55,8 @@ const routes: Routes = [
   {path: 'productos', component: ProductosComponent, canActivate: [CanAdminGuard]},
   {path: 'productos-graf', component: ProductosGrafComponent, canActivate: [CanAdminGuard]},
   {path: 'ventas-admin', component: VentasAdminComponent, canActivate: [CanAdminGuard]},
+  {path: 'compras', component: ComprasComponent, canActivate: [CanAdminGuard]},
+  {path: 'existencias', component: ExistenciasComponent, canActivate: [CanAdminGuard]},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];

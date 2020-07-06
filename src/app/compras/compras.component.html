@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p class="h2 top accesibilidad">Compras</p>
+        <ngb-alert id="uno" type="danger" (close)="cerrar('uno')">Algunos de los campos no han sido llenados o estan incorrectos revisalos otra vez</ngb-alert>
+        <ngb-alert id="dos" type="success" (close)="cerrar('dos')">El registro se hizo correctamente</ngb-alert>
+        <ngb-alert id="tres" type="info" (close)="cerrar('tres')">El registro se elimino</ngb-alert>
+        </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <form (ngSubmit)="newCompra(newCompraForm.value)" [formGroup]="newCompraForm" class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="accesibilidad">Id Producto</label>
+                        <select class="form-control" id="exampleFormControlSelect1" formControlName="idProducto">
+                            <ng-container *ngFor="let producto of productos">
+                                <option value="{{producto.id}}">{{producto.id}}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 accesibilidad">
+                    <div class="form-group">
+                        <label for="validationCustomUsername" class="accesibilidad">Cantidad</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrepend">#</span>
+                            </div>
+                            <input type="text" class="form-control" id="validationCustomUsername"  aria-describedby="inputGroupPrepend" formControlName="cantidad" required>
+                            <div class="invalid-feedback accesibilidad">
+                                Por favor pon la cantidad.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group accesibilidad">
+                        <input type="submit" class="btn btn-info btn-block" value="Agregar">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="mt-4 col-xs-12 col-sm-12 col-md-7 col-lg-7" *ngIf="compras; else loading">
+            <div class="table-responsive">
+                <table class="table accesibilidad">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Editar/Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of compras">
+                            <td>{{c.data.idProducto}}</td>
+                            <td>{{c.data.cantidad}}</td>
+                            <td>
+                                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                                    <button type="button" class="btn btn-secondary" (click)="editCompra(c.id)"><i class="far fa-edit"></i></button>
+                                    <button type="button" class="btn btn-secondary" (click)="deleteCompra(c.id)"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<ng-template #loading>
+    <div class="row text-center mt-5 pt-5">
+        <div class="col">
+            <i class="fas fa-sync-alt fa-5x fa-spin"></i>
+        </div>
+    </div>
+</ng-template>

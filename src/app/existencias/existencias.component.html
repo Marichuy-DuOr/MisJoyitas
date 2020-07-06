@@ -1,0 +1,39 @@
+<div class="container" style="background-color: white;">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p class="h2 top accesibilidad">Existencias</p>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+            <div class="mt-4 col-xs-12 col-sm-12 col-md-9 col-lg-9" *ngIf="existencias; else loading">
+                <div class="table-responsive" >
+                    <table class="table accesibilidad">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id Producto</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Imagen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let e of existencias">
+                                <td>{{e.data.idProducto}}</td>
+                                <td>{{e.data.nombre}}</td>
+                                <td>{{e.data.cantidad}}</td>
+                                <td><img style="width: 8rem;" [src]="e.data.imagen"></td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col"></div>
+    </div>
+</div>
+<ng-template #loading>
+    <div class="row text-center mt-5 pt-5">
+        <div class="col">
+            <i class="fas fa-sync-alt fa-5x fa-spin"></i>
+        </div>
+    </div>
+</ng-template>
