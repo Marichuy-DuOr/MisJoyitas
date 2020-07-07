@@ -69,7 +69,15 @@ export class JoyasComponent implements OnInit {
   }
 
   push(id: string) {
-    this.carritoService.pushCart(id, '1');
-    console.log('Se agrego gggg-> ', id);
+    this.firestoreService.consultas('existencias', 'idProducto', id).subscribe((existenciaSnapshot) => {
+      existenciaSnapshot.forEach((existenciaData: any) => {
+        if (Number(existenciaData.payload.doc.data()['cantidad']) > 0) {
+          console.log(existenciaData.payload.doc.data()['cantidad']);
+          this.carritoService.pushCart(id, '1');
+        } else {
+          console.log(existenciaData.payload.doc.data()['No hay existencias suficientes']);
+        }
+      });
+    });
   }
 }
