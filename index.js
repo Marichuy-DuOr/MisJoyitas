@@ -23,7 +23,7 @@ let db = admin.firestore();
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json())
 
-app.use(express.static(path.join(__dirname, 'dist/MisJoyitas')));
+/*app.use(express.static(path.join(__dirname, 'dist/MisJoyitas')));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/dist/MisJoyitas/index.html'));
@@ -33,7 +33,14 @@ const port = process.env.PORT || 3000;
 app.set('port', port);
 
 const server = http.createServer(app);
-server.listen(port, () => console.log('running'));
+server.listen(port, () => console.log('running'));*/
+const port = process.env.PORT || 3000;
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/MisJoyitas/index.html'));
+});
+
+app.listen(port, () => console.log(`url-shortener listening on port ${port}!`));
 
 /*const port = process.env.PORT || 3000;
 
