@@ -23,32 +23,21 @@ let db = admin.firestore();
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json())
 
-/*app.use(express.static(path.join(__dirname, 'dist/MisJoyitas')));
+app.use(express.static(path.join(__dirname, 'dist/MisJoyitas')));
 
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/dist/MisJoyitas/index.html'));
+});*/
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + 'dist/MisJoyitas/index.html'));
 });
 
 const port = process.env.PORT || 3000;
 app.set('port', port);
 
 const server = http.createServer(app);
-server.listen(port, () => console.log('running'));*/
-const port = process.env.PORT || 3000;
+server.listen(port, () => console.log('running'));
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/dist/MisJoyitas/index.html'));
-});
-
-app.listen(port, () => console.log(`url-shortener listening on port ${port}!`));
-
-/*const port = process.env.PORT || 3000;
-
-// app.use(express.static(process.cwd() + "/dist/MisJoyitas"));
-
-app.listen(port, () => {
-    console.log(`Servidor en ejecución en http://localhost:${port}`);
-})*/
 
 app.post("/send", (req, res) => {
     console.log("peticion");
