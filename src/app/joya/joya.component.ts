@@ -28,11 +28,6 @@ export class JoyaComponent implements OnInit {
     configAlert.dismissible = true;
     this.activatedRoute.params.subscribe( params => {
       this.idDoc = params['id'];
-      /*const editSubscribe = this.firestoreService.getProducto(params['id']).subscribe((producto) => {
-        this.joya = producto.payload.data();
-        console.log(this.joya.imagen);
-        // editSubscribe.unsubscribe();
-      });*/
     });
   }
 
@@ -40,18 +35,26 @@ export class JoyaComponent implements OnInit {
     this.firestoreService.getProducto(this.idDoc).subscribe((producto) => {
       this.joya = producto.payload.data();
       console.log(this.joya.imagen);
-      // editSubscribe.unsubscribe();
     });
   }
 
   push(id: string) {
     if (this.cantidadForm.valid) {
-      document.getElementById('dos').style.display = 'block';
-      setTimeout(() => document.getElementById('dos').style.display = 'none', 1000);
 
-      const { cantidad } = this.cantidadForm.value;
-      this.carritoService.pushCart(id, cantidad);
-      console.log('Se agrego gggg-> ', id);
+      this.firestoreService.consultas('existencias', 'idProducto', id).subscribe((existenciaSnapshot) => {
+        existenciaSnapshot.forEach((existenciaData: any) => {
+          const { cantidad } = this.cantidadForm.value;
+          if (Number(existenciaData.payload.doc.data()['cantidad']) >= cantidad) {
+            document.getElementById('dos').style.display = 'block';
+            setTimeout(() => document.getElementById('dos').style.display = 'none', 1000);
+            this.carritoService.pushCart(id, cantidad);
+          } else {
+            document.getElementById('tres').style.display = 'block';
+            setTimeout(() => document.getElementById('tres').style.display = 'none', 1000);
+          }
+        });
+      });
+
     } else {
       document.getElementById('uno').style.display = 'block';
       setTimeout(() => document.getElementById('uno').style.display = 'none', 5000);

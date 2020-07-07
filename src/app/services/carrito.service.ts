@@ -21,10 +21,10 @@ export class CarritoService {
     this.cart.push(data);
   }
 
-  public pullCart(idProducto: string) {
+  public pullCart(idProducto: string, cantidad: string) {
     let i = 0;
     for ( i ; i < this.cart.length; i++) {
-      if (this.cart[i].idProd == idProducto) {
+      if (this.cart[i].idProd == idProducto && this.cart[i].cantidad == cantidad) {
         this.cart.splice( i , 1 );
         break;
       }

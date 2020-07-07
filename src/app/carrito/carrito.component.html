@@ -5,7 +5,7 @@
                 <p class="titulo-joyas accesibilidad">Mi carrito</p>
             </div>
         </div>
-        <div class="row text-center align-items-center">
+        <div class="row ">
             <div class="card-columns">
                 <div class="card" *ngFor="let producto of productos">
                     <img class="card-img-top" [src]="producto.imagen" alt="Card image cap">
@@ -15,60 +15,69 @@
                         <p class="card-text accesibilidad">Precio: ${{producto.precio}}</p>
                         <p class="card-text accesibilidad">Total: ${{producto.total}}</p>
 
-                        <a (click)="pull(producto.idProducto)" class="btn btn-danger">Eliminar del carrito</a>
+                        <a (click)="pull(producto.idProducto, producto.cantidad)" class="btn btn-danger">Eliminar del carrito</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container con">
-          <p class="h3 pt-3 text-center top2">Detalles de compra</p>
-          <div *ngFor="let producto of productos">
-            <div class="row mt-1">
-              <div class="col-md-8"> <h5> {{producto.nombre}} </h5> </div>
-              <div class="col-md-4"> <h5> $ {{producto.precio}} </h5> </div>
-            </div>
-          </div>
-
-          <div class="pb-3">
-            <div class="row mt-1">
-              <div class="col-md-8"> <h4> Suma </h4> </div>
-              <div class="col-md-4"> <h4> $ {{suma}} </h4> </div>
+        <div style="background-color: white;" class="container">
+            <div *ngFor="let producto of productos">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h5> {{producto.nombre}} </h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5> $ {{producto.precio}} </h5>
+                    </div>
+                </div>
             </div>
 
-            <div class="row mt-1">
-              <div class="col-md-8"> <h4> Descuento </h4> </div>
-              <div class="col-md-4"> <h4> $ {{descuento}} </h4> </div>
-            </div>
+            <div class="accesibilidad">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4> Suma </h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4> $ {{suma}} </h4>
+                    </div>
+                </div>
 
-            <div class="row mt-1">
-              <div class="col-md-8"> <h4> Total </h4> </div>
-              <div class="col-md-4"> <h4> $ {{elTotal}} </h4> </div>
-            </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4> Descuento </h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4> $ {{descuento}} </h4>
+                    </div>
+                </div>
 
-            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4> Total </h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4> $ {{elTotal}} </h4>
+                    </div>
+                </div>
 
-            <div class="row mt-1">
-              <div class="col-md-8"> <h4> Coidgo de Descuento </h4> </div>
-              <div class="col-md-4"> <input type="text" placeholder="codigo" id="code"> </div>
-            </div>
+                <div class="form-group" [formGroup]="DescuentoForm">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4> Coidgo de Descuento </h4>
+                        </div>
+                        <div class="col-md-4"> <input type="text" placeholder="codigo" class="form-control" formControlName="Descuento"> </div>
+                    </div>
 
-            <div class="row mt-3">
-              <div class="col"></div>
-              <div class="col-md-5">
-                <button type="button" class="btn btn-info btn-block" (click)="Canjeo()">Canjear Codigo</button>
-              </div>
-              <div class="col"></div>
-              
+                    <div class="row">
+                        <button type="button" class="btn btn-primary" (click)="Canjeo()">Canjear Codigo</button>
+                    </div>
+                </div>
             </div>
-            <div class="row mt-2">
-              <div class="col"></div>
-              <div class="col-md-5">
-                <a (click)="venta()" class="btn btn-success btn-block">Terminar compra</a>
-              </div>
-              <div class="col"></div>
+            <div class="row">
+                <a (click)="venta()" class="btn btn-danger">Terminar compra</a>
             </div>
-          </div>
+        </div>
     </div>
 </div>
 

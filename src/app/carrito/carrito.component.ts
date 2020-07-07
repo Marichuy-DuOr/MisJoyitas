@@ -1,3 +1,4 @@
+import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from '../services/carrito.service';
 import { FirestoreService } from '../services/firestore.service';
@@ -12,11 +13,16 @@ import { Observable } from 'rxjs';
 })
 export class CarritoComponent implements OnInit {
 
+  DescuentoForm = new FormGroup({
+    Descuento: new FormControl('')
+  });
+
   descuento = 0;
   code = '';
   Codes = [];
 
   public productos = [];
+  public existencia = [];
   public array;
   public suma = 0;
   public elTotal = 0;
@@ -28,12 +34,12 @@ export class CarritoComponent implements OnInit {
     private authSvc: AuthService,
     private firestoreService: FirestoreService,
     public carritoService: CarritoService,
-    ) {
+  ) {
     this.compraTerminada = false;
     this.array = this.carritoService.getCart();
     for (let item of this.array) {
       this.firestoreService.getProducto(item.idProd).subscribe((producto) => {
-        const tot = Number(item.cantidad) * Number (producto.payload.data()['venta']);
+        const tot = Number(item.cantidad) * Number(producto.payload.data()['venta']);
         this.suma += tot;
         this.elTotal += tot;
         const data: DatosVenta = {
@@ -47,20 +53,53 @@ export class CarritoComponent implements OnInit {
         this.productos.push(data);
       });
       console.log(this.productos);
+
+      this.firestoreService.consultas('existencias', 'idProducto', item.idProd).subscribe((existenciaSnapshot) => {
+        existenciaSnapshot.forEach((existenciaData: any) => {
+          const data = {
+            id: existenciaData.payload.doc.id,
+            cantidad: existenciaData.payload.doc.data()['cantidad'],
+            idProducto: existenciaData.payload.doc.data()['idProducto'],
+            imagen: existenciaData.payload.doc.data()['imagen'],
+            nombre: existenciaData.payload.doc.data()['nombre']
+          };
+          this.existencia.push(data);
+        });
+      });
     }
   }
 
   ngOnInit(): void {
   }
 
-  pull(idProd: string) {
-    const indice = this.carritoService.pullCart(idProd);
+  pull(idProd: string, cantidad: string) {
+    const indice = this.carritoService.pullCart(idProd, cantidad);
     this.suma -= Number(this.productos[indice].total);
     this.elTotal -= Number(this.productos[indice].total);
-    this.productos.splice(indice, 1 );
+    this.productos.splice(indice, 1);
+    this.existencia.splice(indice, 1);
   }
 
   venta() {
+    for (let i = 0; i < this.productos.length; i++) {
+
+      let cant = Number(this.existencia[i].cantidad) - Number(this.productos[i].cantidad);
+      if (cant < 0) {
+        cant = 0;
+      }
+      const data = {
+        cantidad: cant,
+        idProducto: this.existencia[i].idProducto,
+        imagen: this.existencia[i].imagen,
+        nombre: this.existencia[i].nombre
+      };
+      this.firestoreService.updateExistencia(this.existencia[i].id, data).then(() => {
+        console.log('Existencias actualizadas->', this.existencia[i].id);
+      }, (error) => {
+        console.log(error);
+      });
+    }
+
     if (this.productos != null) {
       this.user$.subscribe(val => {
         let data = {
@@ -74,6 +113,7 @@ export class CarritoComponent implements OnInit {
         }, (error) => {
           console.error(error);
         });
+
         this.compraTerminada = true;
         this.carritoService.newCart();
       });
@@ -81,8 +121,8 @@ export class CarritoComponent implements OnInit {
   }
 
   Canjeo() {
-    this.code = document.getElementById('code').value;
-    console.log (this.code);
+    this.code = this.DescuentoForm.value.Descuento;
+    console.log(this.code);
     this.firestoreService.getCupones().subscribe((cuponesSnapshot) => {
       this.Codes = [];
       cuponesSnapshot.forEach((cuponData: any) => {
@@ -91,9 +131,9 @@ export class CarritoComponent implements OnInit {
           data: cuponData.payload.doc.data(),
         });
       });
-      console.log (this.Codes);
-      this.Codes.forEach( (codigo: any) => {
-        console.log (this.code, ' === ', codigo.data.Codigo, '?');
+      console.log(this.Codes);
+      this.Codes.forEach((codigo: any) => {
+        console.log(this.code, ' === ', codigo.data.Codigo, '?');
         if (this.code === codigo.data.Codigo) {
           this.descuento = this.elTotal * codigo.data.Descuento;
           this.elTotal -= this.descuento;
@@ -101,6 +141,7 @@ export class CarritoComponent implements OnInit {
       });
     });
   }
+
 }
 
 
