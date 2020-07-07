@@ -29,7 +29,8 @@ export class OfertasComponent implements OnInit {
   }
 
   generarQR() {
-    this.email.getCupon('http://localhost:3000/cupones').subscribe( (Cupones) => {
+    // this.email.getCupon('http://localhost:3000/cupones').subscribe( (Cupones) => {
+    this.email.getCupon('https://warm-peak-43400.herokuapp.com/cupones').subscribe( (Cupones) => {
       console.log(Cupones);
       let seleccionado: string;
       this.svg = null;

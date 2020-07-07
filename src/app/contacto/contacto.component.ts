@@ -29,7 +29,8 @@ export class ContactoComponent implements OnInit {
     if (this.contactForm.valid) {
       const { name, email, comment } = this.contactForm.value;
       const user = {name, email, comment};
-      this.email.send( 'http://localhost:3000/send', user).subscribe(data => {
+      // this.email.send( 'http://localhost:3000/send', user).subscribe(data => {
+      this.email.send( 'https://warm-peak-43400.herokuapp.com/send', user).subscribe(data => {
         let res: any = data;
         console.log(`${user.name} a mandado feedback`);
 
