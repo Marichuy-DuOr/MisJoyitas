@@ -35,13 +35,13 @@ app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log('running'));
 
-/*const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-app.use(express.static(process.cwd() + "/dist/MisJoyitas"));
+// app.use(express.static(process.cwd() + "/dist/MisJoyitas"));
 
 app.listen(port, () => {
     console.log(`Servidor en ejecución en http://localhost:${port}`);
-})*/
+})
 
 app.post("/send", (req, res) => {
     console.log("peticion");
